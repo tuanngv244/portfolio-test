@@ -12,6 +12,16 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      keyframes: {
+        expandWidth: {
+          "0%": { width: "0%" },
+          "50%": { width: "50%" },
+          "100%": { width: "100%" },
+        },
+      },
+      animation: {
+        expandWidth: "expandWidth 2s ease-in-out infinite", // duration, easing, repetition
+      },
     },
   },
   plugins: [],
