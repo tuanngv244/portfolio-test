@@ -2,12 +2,44 @@
 import { useBoolean } from "@/hooks/useBoolean";
 import clsx from "clsx";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 
 const Header = () => {
   const [openSidebar, { toggle: toggleSidebar }] = useBoolean();
 
   const linkStyles = "text-[20px]";
+
+  useEffect(() => {
+    if ("Notification" in window) {
+      // Request permission
+      Notification.requestPermission().then(function (permission) {
+        if (permission === "granted") {
+          // Create a notification
+          const notification = new Notification("Welcome bro!", {
+            body: "Do you have an idea? click me to connect",
+            icon: "/favicon-32.png", // Optional icon
+            // Other options like sound, vibration, etc.
+          });
+
+          // Handle notification clicks and closures
+          notification.onclick = function () {
+            // Redirect to a specific URL or perform other actions
+            window.open("https://vantuan2404.github.io/Tuan/");
+          };
+
+          notification.onerror = function () {
+            console.error("Error displaying notification");
+          };
+
+          notification.onclose = function () {
+            console.log("Notification closed");
+          };
+        }
+      });
+    } else {
+      alert("Why did you refuse? I am really disappointed in you.");
+    }
+  }, []);
 
   return (
     <>
