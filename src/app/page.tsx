@@ -8,7 +8,7 @@ export default function Home() {
       <BgMove />
       <div className="w-full h-full relative z-10 flex items-center justify-center">
         <h1 className="text-[56px] text-white uppercase font-bold ">
-          Nguyen Van Tuan
+          Nguyen Van Tuan ABV
         </h1>
       </div>
     </div>
